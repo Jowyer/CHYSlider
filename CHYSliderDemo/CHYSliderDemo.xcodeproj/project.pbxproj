@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F98E8B517D81AA2006F2601 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F98E8B417D81AA2006F2601 /* Default-568h@2x.png */; };
+		2F98E8BA17D824FD006F2601 /* progressbar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F98E8B617D824FC006F2601 /* progressbar_bg.png */; };
+		2F98E8BB17D824FD006F2601 /* progressbar_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F98E8B717D824FC006F2601 /* progressbar_bg@2x.png */; };
+		2F98E8BC17D824FD006F2601 /* progressbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F98E8B817D824FC006F2601 /* progressbar.png */; };
+		2F98E8BD17D824FD006F2601 /* progressbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2F98E8B917D824FD006F2601 /* progressbar@2x.png */; };
 		830BB21915DD411F004DCC53 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830BB21815DD411F004DCC53 /* QuartzCore.framework */; };
 		8310180D15DCE5DD0081D40B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8310180C15DCE5DD0081D40B /* UIKit.framework */; };
 		8310180F15DCE5DD0081D40B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8310180E15DCE5DD0081D40B /* Foundation.framework */; };
@@ -35,6 +40,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F98E8B417D81AA2006F2601 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		2F98E8B617D824FC006F2601 /* progressbar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressbar_bg.png; sourceTree = "<group>"; };
+		2F98E8B717D824FC006F2601 /* progressbar_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressbar_bg@2x.png"; sourceTree = "<group>"; };
+		2F98E8B817D824FC006F2601 /* progressbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = progressbar.png; sourceTree = "<group>"; };
+		2F98E8B917D824FD006F2601 /* progressbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressbar@2x.png"; sourceTree = "<group>"; };
 		830BB21815DD411F004DCC53 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		8310180815DCE5DD0081D40B /* CHYSliderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CHYSliderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8310180C15DCE5DD0081D40B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -86,6 +96,7 @@
 		831017FD15DCE5DC0081D40B = {
 			isa = PBXGroup;
 			children = (
+				2F98E8B417D81AA2006F2601 /* Default-568h@2x.png */,
 				8310183215DCE6280081D40B /* Icon~iPad@2x.png */,
 				8310183015DCE6250081D40B /* Icon~iPad.png */,
 				8310182E15DCE6200081D40B /* Icon@2x.png */,
@@ -154,6 +165,10 @@
 				83EAE7FB15DE192B0055F7F1 /* stepped_track_orange@2x.png */,
 				8310183D15DCFD3D0081D40B /* thumb.png */,
 				8310183E15DCFD3D0081D40B /* thumb@2x.png */,
+				2F98E8B617D824FC006F2601 /* progressbar_bg.png */,
+				2F98E8B717D824FC006F2601 /* progressbar_bg@2x.png */,
+				2F98E8B817D824FC006F2601 /* progressbar.png */,
+				2F98E8B917D824FD006F2601 /* progressbar@2x.png */,
 				8310183615DCE6B70081D40B /* CHYSlider.h */,
 				8310183715DCE6B70081D40B /* CHYSlider.m */,
 			);
@@ -229,6 +244,11 @@
 				83EAE7FD15DE192B0055F7F1 /* stepped_track_grey@2x.png in Resources */,
 				83EAE7FE15DE192B0055F7F1 /* stepped_track_orange.png in Resources */,
 				83EAE7FF15DE192B0055F7F1 /* stepped_track_orange@2x.png in Resources */,
+				2F98E8B517D81AA2006F2601 /* Default-568h@2x.png in Resources */,
+				2F98E8BA17D824FD006F2601 /* progressbar_bg.png in Resources */,
+				2F98E8BB17D824FD006F2601 /* progressbar_bg@2x.png in Resources */,
+				2F98E8BC17D824FD006F2601 /* progressbar.png in Resources */,
+				2F98E8BD17D824FD006F2601 /* progressbar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

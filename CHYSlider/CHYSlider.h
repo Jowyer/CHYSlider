@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CHYSlider : UIControl {
+@interface CHYSlider : UIControl
+{
     BOOL _thumbOn;                              // track the current touch state of the slider
     UIImageView *_thumbImageView;               // the slide knob
     UIImageView *_trackImageViewNormal;         // slider track image in normal state
@@ -31,4 +32,8 @@
 @property(nonatomic) int decimalPlaces;                     // determin how many decimal places are displayed in the value labels
 
 @property(nonatomic, getter = isStepped) BOOL stepped;      // if set, the slider is segmented with 6 values, and thumb only stays on these values. default = NO. (Note: the stepped slider is not fully implemented, I'm considering adding a NSArray steppedValues property in next release)
+
+// by jowyer
+-(id)initWithFrame:(CGRect)frame TrackImageNormalName:(NSString *)trackImageNormalName TrackImageHighlightName:(NSString *)trackImageHighlightName ThumbImageName:(NSString *)thumbImageName;
+
 @end

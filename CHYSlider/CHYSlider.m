@@ -32,7 +32,8 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
-    if (self) {
+    if (self)
+    {
         [self commonInit];
     }
     return self;
@@ -41,10 +42,21 @@
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     self = [super initWithCoder:aDecoder];
-    if (self) {
+    if (self)
+    {
         [self commonInit];
     }
     return self;    
+}
+
+-(id)initWithFrame:(CGRect)frame TrackImageNormalName:(NSString *)trackImageNormalName TrackImageHighlightName:(NSString *)trackImageHighlightName ThumbImageName:(NSString *)thumbImageName
+{
+    self = [super initWithFrame:frame];
+    if (self)
+    {
+        [self commonInitWithTrackImageNormalName:trackImageNormalName TrackImageHighlightName:trackImageHighlightName ThumbImageName:thumbImageName];
+    }
+    return self;
 }
 
 // re-layout subviews in case of first initialization and screen orientation changes
@@ -100,7 +112,8 @@
 
 - (void)setValue:(float)value
 {
-    if (value < _minimumValue || value > _maximumValue) {
+    if (value < _minimumValue || value > _maximumValue)
+    {
         return;
     }
     
@@ -115,6 +128,46 @@
 }
 
 #pragma mark - Helpers
+- (void)commonInitWithTrackImageNormalName:(NSString *)trackNormalName TrackImageHighlightName:(NSString *)trackHighlightName ThumbImageName:(NSString *)thumbImageName
+{
+    _value = 0.f;
+    _minimumValue = 0.f;
+    _maximumValue = 1.f;
+    _continuous = YES;
+    _thumbOn = NO;
+    _stepped = NO;
+    _decimalPlaces = 0;
+    
+    self.backgroundColor = [UIColor clearColor];
+    
+    // the track background images
+    _trackImageViewNormal = [[UIImageView alloc] initWithImage:[UIImage imageNamed:trackNormalName]];
+    [self addSubview:_trackImageViewNormal];
+    _trackImageViewHighlighted = [[UIImageView alloc] initWithImage:[UIImage imageNamed:trackHighlightName]];
+    [self addSubview:_trackImageViewHighlighted];
+    
+    // thumb knob
+    _thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:thumbImageName]];
+    [self addSubview:_thumbImageView];
+    
+    // value labels
+    /*
+    _labelOnThumb = [[UILabel alloc] init];
+    _labelOnThumb.backgroundColor = [UIColor clearColor];
+    _labelOnThumb.textAlignment = UITextAlignmentCenter;
+    _labelOnThumb.text = [NSString stringWithFormat:[self valueStringFormat], _value];
+    _labelOnThumb.textColor = [UIColor whiteColor];
+    [self addSubview:_labelOnThumb];
+    
+    _labelAboveThumb = [[UILabel alloc] init];
+    _labelAboveThumb.backgroundColor = [UIColor clearColor];
+    _labelAboveThumb.textAlignment = UITextAlignmentCenter;
+    _labelAboveThumb.text = [NSString stringWithFormat:[self valueStringFormat], _value];
+    _labelAboveThumb.textColor = [UIColor colorWithRed:232.f/255.f green:151.f/255.f blue:79.f/255.f alpha:1.f];
+    [self addSubview:_labelAboveThumb];
+     */
+}
+
 - (void)commonInit
 {
     _value = 0.f;
@@ -204,19 +257,26 @@
 }
 
 #pragma mark - Touch events handling
--(BOOL) beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
+-(BOOL) beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
+{
     CGPoint touchPoint = [touch locationInView:self];
-    if(CGRectContainsPoint(_thumbImageView.frame, touchPoint)){
+    if(CGRectContainsPoint(_thumbImageView.frame, touchPoint))
+    {
         _thumbOn = YES;
-    }else {
+    }
+    else
+    {
         _thumbOn = NO;
     }
     return YES;
 }
 
--(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
-    if (_thumbOn) {
-        if (_stepped) {
+-(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    if (_thumbOn)
+    {
+        if (_stepped)
+        {
             _thumbImageView.center = CGPointMake( [self stepMarkerXCloseToX:[touch locationInView:self].x], _thumbImageView.center.y);
             [self setNeedsDisplay];
         }
@@ -228,14 +288,16 @@
     _thumbOn = NO;
 }
 
--(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
+-(BOOL)continueTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
+{
     if(!_thumbOn) return YES;
     
     CGPoint touchPoint = [touch locationInView:self];
     
     _thumbImageView.center = CGPointMake( MIN( MAX( [self xForValue:_minimumValue], touchPoint.x), [self xForValue:_maximumValue]), _thumbImageView.center.y);
     
-    if (_continuous && !_stepped) {
+    if (_continuous && !_stepped)
+    {
         _value = [self valueForX:_thumbImageView.center.x];
         _labelOnThumb.text = [NSString stringWithFormat:[self valueStringFormat], _value];
         _labelAboveThumb.text = [NSString stringWithFormat:[self valueStringFormat], _value];

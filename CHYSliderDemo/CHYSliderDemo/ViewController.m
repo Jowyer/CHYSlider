@@ -40,6 +40,14 @@
     // these two labels will be updated with an IBAction method which is linked to slider's UIControlEventValueChanged event
     _continuousValueLabel.text = [NSString stringWithFormat:@"%.2f", _continuousSlider.value];
     _steppedValueLabel.text = [NSString stringWithFormat:@"%.2f", _steppedSlider.value];
+    
+    
+    // by jowyer
+    mySlider = [[CHYSlider alloc] initWithFrame:CGRectMake(60, 400, 200, 40) TrackImageNormalName:@"progressbar_bg.png" TrackImageHighlightName:@"progressbar.png" ThumbImageName:@"thumb.png"];
+    mySlider.minimumValue = 100;
+    mySlider.maximumValue = 400;
+    mySlider.value = 250;
+    [self.view addSubview:mySlider];
 }
 
 - (void)viewDidUnload
@@ -54,9 +62,12 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone)
+    {
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
+    }
+    else
+    {
         return YES;
     }
 }
