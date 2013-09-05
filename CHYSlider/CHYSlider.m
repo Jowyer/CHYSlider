@@ -49,12 +49,12 @@
     return self;    
 }
 
--(id)initWithFrame:(CGRect)frame TrackImageNormalName:(NSString *)trackImageNormalName TrackImageHighlightName:(NSString *)trackImageHighlightName ThumbImageName:(NSString *)thumbImageName
+-(id)initWithFrame:(CGRect)frame TrackImageNormalName:(NSString *)trackImageNormalName TrackImageHighlightName:(NSString *)trackImageHighlightName ThumbImageName:(NSString *)thumbImageName ThumbOffsetY:(CGFloat)offsetY ThumbImageSize:(CGSize)thumbSize
 {
     self = [super initWithFrame:frame];
     if (self)
     {
-        [self commonInitWithTrackImageNormalName:trackImageNormalName TrackImageHighlightName:trackImageHighlightName ThumbImageName:thumbImageName];
+        [self commonInitWithTrackImageNormalName:trackImageNormalName TrackImageHighlightName:trackImageHighlightName ThumbImageName:thumbImageName ThumbOffsetY:offsetY ThumbImageSize:thumbSize];
     }
     return self;
 }
@@ -69,10 +69,12 @@
     _trackImageViewHighlighted.frame = self.bounds;
     
     // the thumb
+    /*  by jowyer
     CGFloat thumbHeight = 98.f *  _trackImageViewNormal.bounds.size.height / 64.f;   // thumb height is relative to track height
     CGFloat thumbWidth = 91.f * thumbHeight / 98.f; // thumb width and height keep the same ratio as the original image size
     _thumbImageView.frame = CGRectMake(0, 0, thumbWidth, thumbHeight);
-    _thumbImageView.center = CGPointMake([self xForValue:_value], CGRectGetMidY(_trackImageViewNormal.frame));
+     */
+    _thumbImageView.center = CGPointMake([self xForValue:_value], CGRectGetMidY(_trackImageViewNormal.frame) - thumbOffsetY);
     
     // the labels
     _labelOnThumb.frame = _thumbImageView.frame;
@@ -128,8 +130,9 @@
 }
 
 #pragma mark - Helpers
-- (void)commonInitWithTrackImageNormalName:(NSString *)trackNormalName TrackImageHighlightName:(NSString *)trackHighlightName ThumbImageName:(NSString *)thumbImageName
+- (void)commonInitWithTrackImageNormalName:(NSString *)trackNormalName TrackImageHighlightName:(NSString *)trackHighlightName ThumbImageName:(NSString *)thumbImageName ThumbOffsetY:(CGFloat)offsetY ThumbImageSize:(CGSize)thumbSize;
 {
+    thumbOffsetY = offsetY;
     _value = 0.f;
     _minimumValue = 0.f;
     _maximumValue = 1.f;
@@ -148,6 +151,7 @@
     
     // thumb knob
     _thumbImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:thumbImageName]];
+    _thumbImageView.frame = (CGRect){0, 0, thumbSize};
     [self addSubview:_thumbImageView];
     
     // value labels

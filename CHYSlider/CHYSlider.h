@@ -14,6 +14,9 @@
     UIImageView *_thumbImageView;               // the slide knob
     UIImageView *_trackImageViewNormal;         // slider track image in normal state
     UIImageView *_trackImageViewHighlighted;    // slider track image in highlighted state
+    
+    // by jowyer
+    CGFloat thumbOffsetY;
 }
 
 /**
@@ -34,6 +37,6 @@
 @property(nonatomic, getter = isStepped) BOOL stepped;      // if set, the slider is segmented with 6 values, and thumb only stays on these values. default = NO. (Note: the stepped slider is not fully implemented, I'm considering adding a NSArray steppedValues property in next release)
 
 // by jowyer
--(id)initWithFrame:(CGRect)frame TrackImageNormalName:(NSString *)trackImageNormalName TrackImageHighlightName:(NSString *)trackImageHighlightName ThumbImageName:(NSString *)thumbImageName;
+-(id)initWithFrame:(CGRect)frame TrackImageNormalName:(NSString *)trackImageNormalName TrackImageHighlightName:(NSString *)trackImageHighlightName ThumbImageName:(NSString *)thumbImageName ThumbOffsetY:(CGFloat)offsetY ThumbImageSize:(CGSize)thumbSize;
 
 @end

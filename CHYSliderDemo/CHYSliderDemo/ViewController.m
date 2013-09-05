@@ -43,10 +43,11 @@
     
     
     // by jowyer
-    mySlider = [[CHYSlider alloc] initWithFrame:CGRectMake(60, 400, 200, 40) TrackImageNormalName:@"progressbar_bg.png" TrackImageHighlightName:@"progressbar.png" ThumbImageName:@"thumb.png"];
+    mySlider = [[CHYSlider alloc] initWithFrame:CGRectMake(60, 400, 200, 40) TrackImageNormalName:@"progressbar_bg.png" TrackImageHighlightName:@"progressbar.png" ThumbImageName:@"thumb.png" ThumbOffsetY:3 ThumbImageSize:CGSizeMake(40, 41)];
     mySlider.minimumValue = 100;
     mySlider.maximumValue = 400;
     mySlider.value = 250;
+    [mySlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:mySlider];
 }
 
@@ -72,8 +73,10 @@
     }
 }
 
-- (IBAction)sliderValueChanged:(id)sender {
+- (IBAction)sliderValueChanged:(id)sender
+{
     _continuousValueLabel.text = [NSString stringWithFormat:@"%.2f", _continuousSlider.value];
     _steppedValueLabel.text = [NSString stringWithFormat:@"%.2f", _steppedSlider.value];
+    NSLog(@"%f", mySlider.value);
 }
 @end
